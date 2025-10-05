@@ -11,9 +11,10 @@
   - Booking history and status tracking
 
 ## URLs
-- **Production**: https://3000-i4duc2lge8jtkn68w6635-6532622b.e2b.dev
-- **Health Check**: https://3000-i4duc2lge8jtkn68w6635-6532622b.e2b.dev/api/schools
-- **GitHub**: (To be configured)
+- **Production**: https://school-van-ride.pages.dev (Deploy following DEPLOYMENT.md)
+- **Development**: https://3000-i4duc2lge8jtkn68w6635-6532622b.e2b.dev
+- **Health Check**: `/api/schools` (returns school list)
+- **GitHub**: https://github.com/Nagen-bot/my-saferide-school
 
 ## Data Architecture
 - **Data Models**: 
@@ -91,8 +92,10 @@
 
 ## Deployment
 - **Platform**: Cloudflare Pages
-- **Status**: ✅ Active (Development)
+- **Status**: 🚀 Ready for Production Deployment
 - **Tech Stack**: Hono + TypeScript + TailwindCSS + Cloudflare D1
+- **GitHub**: Code pushed and ready for deployment
+- **Instructions**: See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment steps
 - **Last Updated**: October 5, 2025
 
 ## Demo Credentials (For Testing)
@@ -100,6 +103,22 @@
 - **Student**: student1@botani.edu.my / password
 - **Parent**: parent1@gmail.com / password  
 - **Admin**: admin@botani.edu.my / password
+
+## 🚀 Quick Deployment to Cloudflare Pages
+
+### Method 1: Cloudflare Dashboard (Recommended)
+1. Visit [Cloudflare Pages](https://pages.cloudflare.com/)
+2. Connect to GitHub → Select `Nagen-bot/my-saferide-school`
+3. Build settings: `npm run build` → Output: `dist`
+4. Deploy! Your app will be at `https://school-van-ride.pages.dev`
+
+### Method 2: Wrangler CLI
+```bash
+npm run build
+npx wrangler pages deploy dist --project-name school-van-ride
+```
+
+📖 **Full deployment guide**: [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ## Development Setup
 1. `npm install` - Install dependencies
