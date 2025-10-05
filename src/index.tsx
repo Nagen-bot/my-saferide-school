@@ -3,7 +3,7 @@ import { cors } from 'hono/cors'
 import { serveStatic } from 'hono/cloudflare-workers'
 
 type Bindings = {
-  DB: D1Database
+  DB?: D1Database
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
@@ -28,6 +28,10 @@ app.get('/api/schools', async (c) => {
 })
 
 app.post('/api/login', async (c) => {
+  if (!c.env.DB) {
+    return c.json({ error: 'Database not configured. Please contact administrator.' }, 503)
+  }
+  
   const { email, password } = await c.req.json()
   
   try {
@@ -47,6 +51,10 @@ app.post('/api/login', async (c) => {
 })
 
 app.post('/api/register', async (c) => {
+  if (!c.env.DB) {
+    return c.json({ error: 'Database not configured. Please contact administrator.' }, 503)
+  }
+  
   const { email, password, name, phone, role, school, student_class, parent_student_id } = await c.req.json()
   
   try {
@@ -64,6 +72,10 @@ app.post('/api/register', async (c) => {
 })
 
 app.get('/api/routes/:school', async (c) => {
+  if (!c.env.DB) {
+    return c.json({ error: 'Database not configured. Please contact administrator.' }, 503)
+  }
+  
   const school = c.req.param('school')
   
   try {
